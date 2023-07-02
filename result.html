@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+</head>
+
+<body>
+    <button onclick="cal()">Result</button>
+
+    <script>
+        function cal() {
+
+            var a = parseInt(prompt("Enter value A : "));
+            var b = parseInt(prompt("Enter value B : "));
+            var c = parseInt(prompt("Enter value C : "));
+            var d = parseInt(prompt("Enter value D : "));
+
+            var sum, sub, mul, div, mod, inc, add, subt,result;
+            function addition(a, b, c, d) {
+                sum = a + b + c + d;
+                document.write("addition = " + sum + "<br>");
+                function subtrecstion() {
+                    sub = a - b - c - d;
+                    document.write("subtrecstion = " + sub + "<br>");
+                    function multipliction() {
+                        mul = a * b * c * d;
+                        document.write("multipliction = " + mul + "<br>");
+                        function division() {
+                            div = a / b / c / d;
+                            document.write("division = " + div + "<br>");
+                            function modual() {
+                                mod = sum / 4;
+                                document.write("modual = " + mod + "<br>");
+                                function incriment() {
+                                    inc = d;
+                                    inc++;
+                                    document.write("incriment = " + inc + "<br>");
+                                    function addi() {
+                                        add = sum + inc;
+                                        document.write("addition = " + add + "<br>");
+                                        function subtrec() {
+                                            subt = sub -sum;
+                                            document.write("subtrecstion = " + subt + "<br>");
+                                            function finalresult(){
+                                                result=(subt*100)/400;
+                                                return result;
+                                            }
+                                            document.write("final result :"+finalresult());
+                                        }
+                                        subtrec();
+                                    }
+                                    addi();
+                                }
+                                incriment();
+                            }
+                            modual();
+                        }
+                        division();
+                    }
+                    multipliction();
+                }
+                subtrecstion();
+            }
+            addition(a, b, c, d);
+        }
+
+    </script>
+</body>
+
+</html>

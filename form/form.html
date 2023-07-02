@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <form name="myform" onsubmit="return formvalid()">
+       First Name :~ <input type="text" name="fname"><br>
+       <span class="formerror" id="fnameError"><b></b></span>
+       
+       Last Name :~ <input type="text" name="lname"><br><span class="formerror" id="lnameError"><b></b></span>
+       Phone No :~ <input type="tel" name="phone"><br><span class="formerror" id="phoneError"><b></b></span>
+       Email :~ <input type="email" name="email"><br><span class="formerror" id="emailError"><b></b></span>
+       Gender:~ Male:~<input type="radio" name="gender" value="male"><span class="formerror" id="maleError"><b></b></span>
+       Female:~<input type="radio" name="gender" value="female"><br><span class="formerror" id="femaleError"><b></b></span>
+        Address:~<textarea rows="10" cols="20" name="address"></textarea><br>
+        <input type="submit" value="submit">
+    </form>
+
+    <table id="datatable" border="1px">
+        <tr>
+            <th>Name</th>
+            <th>Phone No</th>
+            <th>Email</th>
+            <th>Gender</th>
+        </tr>
+    </table>
+
+    <h2>Male Name:~</h2>
+    <table id="malenametable" border="1px">
+        <tr>
+            <th>Name:~</th>
+        </tr>
+    </table>
+
+
+    <script>
+        var data=[];
+
+        function formvalid(){
+            let fname=document.forms['myform']['fname'].value;
+            let lname=document.forms['myform']['lname'].value;
+            let email=document.forms['myform']['email'].value;
+            let phone=document.forms['myform']['phone'].value;
+            let address=document.forms['myform']['address'].value;
+            let gender=document.querySelector('input[name="gender"]:checked');
+
+            let fnameError=document.getElementById('fnameError');
+            let lnameError=document.getElementById('lnameError');
+            let phoneError=document.getElementById('phoneError');
+            let emailError=document.getElementById('emailError');
+            let genderError=document.getElementById('genderError');
+
+
+             
+            let fullname=fname.concat(lname);
+            console.log(fullname);
+            try{
+                //fnameError.textContent="";
+               // lnameError.textContent="";
+               // phoneError.textContent="";
+               // emailError.textContent="";
+               // genderError.textContent="";
+
+
+                if(fname==""||lname)throw 'Name cannot be empty';
+                if(!isNaN(fname)||!isNaN(lname)) throw 'Name cannot be number';
+                if(fname.length<3 || fname.length > 20) throw 'Name length should be between 3 to 20';
+                if(lname.length<3 || lname.length > 20) throw 'Name length should be between 3 to 20';
+
+                if(phone=="")throw 'phone number cannot empty';
+                if(phone.length!==10)throw 'phone number must be 10 digits';
+                if(isNaN(phone))throw 'phone number must be number';
+
+                if(email=="")throw 'Email cannot empty';
+                if(!validateEmail(email))throw 'Invalid Email format';
+
+                if(!gender) throw 'please select email format';
+
+                var dataObj={
+                    name:name,
+                    phone:phone,
+                    Email:email,
+                    gender:gender.value
+                };
+
+
+                data.push(dataObj);
+                document.forms['myform'].reset();
+                cleartable();
+                renderTable(data);
+
+
+            }catch(err){
+                switch(err){
+                    case 'Name cannot be empty':
+                    fnameError.textContent=err;
+                    lnameError.taxtContent=err;
+
+                    break;
+                    case 'Name cannot be number':
+                    fnameError.textContent=err;
+                    lnameError.taxtContent=err;
+
+                    break;
+                    case 'Name length should be between 3 to 20':
+                    fnameError.taxtContent=err;
+                    lnameError.taxtContent=err;
+                    break;
+                    case 'phone number cannot empty':
+                    phoneError.taxtContent=err;
+
+                    break;
+                    case 'phone number must be 10 digits':
+                    phoneError.taxtContent=err;
+
+                    break;
+                    case 'phone number must be number':
+                    phoneError.taxtContent=err;
+
+                    break;
+                    case 'Email cannot empty':
+                    emailError.taxtContent=err;
+
+                    break;
+                    case 'Invalid Email format':
+                    emailError.taxtContent=err;
+
+                    break;
+                    case 'please select email format':
+                    emailError.taxtContent=err;
+
+                    break;
+                    default:
+                    console.log(err);
+                }
+            }
+            return false;
+        }
+
+        function validateEmail(email){
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        function cleartable(){
+            var datatable =document.getElementById("datatable");
+            while(datatable.rows.length>1){
+            table.deleteRow(1);
+            }
+
+
+            var malenametable = document.getElementById("malenametable");
+            while (malenametable.rows.length>1){
+                malenametable.deleteRow(1);
+            }
+        }
+
+        function renderTable(data){
+            var datatable=document.getElementById("table");
+            var malenametable=document.getElementById("name");
+
+            data.map(function (item){
+                var row=datatable.insertRow(-1);
+
+                var fnamecell=row.insertcell(0);
+                fnamecell.innerHTML=item.fname;
+
+                var lnamecell=row.insertcell(1);
+                lnamecell.innerHTML=item.lname;
+
+                var phonecell=row.insertcell(2);
+                phonecell.innerHTML=item.phone;
+
+                var emailcell=row.insertcell(3);
+                emailcell.innerHTML=item.email;
+
+                var gendercell=row.insertcell(3);
+                gendercell.innerHTML=item.gender;
+
+                if(item.gender==='male'){
+                    var maleRow=malenametable.insertRow(-1);
+                    var malenamecell=maleRow.insertRow(0);
+                    malenamecell.innerHTML=item.malenametable;
+                }
+            });
+            }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+<script>
+    function registerUser(event) {
+      event.preventDefault();
+
+      // Get form values
+      const nameInput = document.getElementById('name'); 
+      const emailInput = document.getElementById('email');
+      const phoneInput = document.getElementById('phone');
+      const maleInput = document.getElementById('male');
+      const femaleInput = document.getElementById('female');
+
+
+
+      // Clear previous errors
+      document.getElementById('nameError').textContent = '';
+      document.getElementById('emailError').textContent = '';
+      document.getElementById('phoneError').textContent = '';
+      document.getElementById('maleError').textContent = '';
+      document.getElementById('femaleError').textContent = ''; 
+
+
+      try {
+        // Validate form inputs
+        if (nameInput.value.trim() === '') throw new Error('Name is required');
+
+        if (nameInput.value.trim() === "") throw new Error('Name is required');
+        if (!isNaN(nameInput)) throw 'Name cannot be number';
+        if (nameInput.length < 3 || nameInput.length > 20) throw 'Name length should be between 3 to 20';
+
+
+        if (phoneInput.value.trim() === '') throw 'phone number cannot empty';
+        if (phoneInput.length !== 10) throw 'phone number must be 10 digits';
+        if (isNaN(phoneInput)) throw 'phone number must be number';
+
+        if (emailInput.value.trim() === "") throw new Error('Name is required');
+        if (!isValidEmail(emailInput.value)) throw new Error('Invalid email');
+
+        if (!genderInput) throw 'please select email format';
+
+
+
+
+        // Create user object
+        const user = {
+          name: nameInput.value,
+          email: emailInput.value,
+          phone: phoneInput.value
+        };
+
+        // Add user to registeredUsers array
+        registeredUsers.push(user);
+
+        // Update the HTML table with the new user
+        const userTable = document.getElementById('userTableBody');
+        const newRow = userTable.insertRow();
+        const nameCell = newRow.insertCell();
+        const emailCell = newRow.insertCell();
+        const phoneCell = newRow.insertCell();
+
+
+        nameCell.textContent = user.name;
+        emailCell.textContent = user.email;
+        phoneCell.textContent = user.phone;
+
+
+        // Clear form inputs
+        nameInput.value = '';
+        emailInput.value = '';
+        //phoneInput.value = '';
+
+
+        // Print registered users array in the console
+        console.log(registeredUsers);
+      } catch (error) {
+        // Handle errors
+        //if (error.message.includes('name')) {
+        // document.getElementById('nameError').textContent = error.message;
+        // } else if (error.message.includes('email')) {
+        // document.getElementById('emailError').textContent = error.message;
+        //} else {
+        //console.error(error);
+        //}
+      }
+    }
+
+    function isValidEmail(email) {
+      // Use regular expression to validate email format
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+
+    // Array to store registered users
+    const registeredUsers = [];
+
+  </script>

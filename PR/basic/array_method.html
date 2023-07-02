@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array method</title>
+</head>
+<body>
+    <script>
+        //Array length
+        var arr=["banana","orange","kiwi","Apple", "Mango"]
+        let size=arr.length;
+        console.log(size);
+
+        //Arry sort
+        var sort=arr.sort()//array method sorts an array alphabetically and ascending order
+        console.log(sort);
+
+
+        //Arry reverse
+        var reverse=arr.reverse()//array method reverse an dscending order and array revers order
+        console.log(reverse);
+
+
+        //Array tostring
+        var str=arr.toString(); //Array to string convert
+        console.log(str);
+
+
+        //Array pop 
+        var pop=arr.pop(); //array in last elemet remove
+        console.log(pop);
+
+
+     //Array push 
+     var push=arr.push("lemon"); //array in last elemet add
+     console.log(push);
+     console.log(arr);
+       
+     //Array shif
+     var shif=arr.shift();//array in first elemet remove
+     console.log(shif);
+
+
+     //Array unshif 
+     var unshif=arr.unshift('gavava');//array in first elemet add
+     console.log(unshif);
+     console.log(arr);
+
+     //Array join 
+     var join=arr.join();// arrar element in join 
+     console.log(join);
+
+
+    //Array concat
+     var arr2=["1","2","3","4","5","6"];
+        var concat=arr.concat(arr2)//tow array in concat
+        console.log(concat);
+
+
+     //Array flat 
+     const myArr = [[1,2],[3,4],[5,6]];
+    const newArr = myArr.flat();
+    console.log(newArr);
+
+
+    //Array splice
+    var splice=arr.splice(1);//Array in remove array elements:
+    console.log(splice);
+    
+    //Array slice
+    var slice=arr.slice(1,3);//Array in after 1 elemet value display
+    console.log(slice);
+
+    </script>
+</body>
+</html>

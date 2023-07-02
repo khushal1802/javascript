@@ -1,0 +1,108 @@
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    background-color: skyblue;
+    padding: 50px;
+    text-align: center;
+    color: black;
+}
+.budget{
+    padding: 50px;
+}
+#budget-form{
+    padding: 50px;
+    height: 250px;
+    width: 80%;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+}
+::placeholder{
+    color: white;
+}
+input{
+    width: 100%;
+    padding: 10px;
+    background-color: transparent;
+    border: 1px solid black;
+    color: white;
+}
+button{
+    background-color: black;
+    border: 1px solid skyblue;
+    font-weight: 600;
+    color: white;
+    padding: 10px;
+    margin-left:30px;
+    transition: all .5s;
+}
+button:hover{
+    background-color: skyblue;
+    color: black;
+}
+#expense-form{
+    padding: 40px;
+    height: 250px;
+    width: 80%;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+}
+.summary{
+    padding: 50px;
+    background-color: skyblue;
+}
+#budget-summary{
+    padding: 30px;
+    height: 100px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    border-radius: 10px; 
+    display: flex;
+    justify-content: space-between; 
+}
+p{
+    display: inline-block;
+    color: white;
+    font-weight: 500;
+    font-size: 20px;
+}
+span{
+    margin:0px 10px;
+}
+.negative-balance {
+    color: red;
+}
+h2{
+    padding: 20px;
+    text-align: center;
+    color: black;
+}
+ul{
+    background-color: rgba(0, 0, 0, 0.3);
+    list-style: none;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+li{
+    padding:0px 100px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+#budget-items{
+    padding: 50px 0px;
+}
+span{
+    margin-left: 100px;
+}
+

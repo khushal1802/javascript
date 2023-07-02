@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> month name</title>
+</head>
+<body>
+    <h1>java script program month name for switch case</h1>
+    <p id="month"></p>
+    <script>
+        let day=new Date();
+        let m=parseInt(prompt("Enter 1 To 12 nuber: "))
+        var month;
+        switch (m) {
+         case 1: 
+            month = "January";
+            break;
+        case 2: 
+            month = "February";
+            break;
+        case 3: 
+            month = "March";
+            break;
+        case 4: 
+            month = "April";
+            break;
+        case 5: 
+            month = "May";
+            break;
+        case 6: 
+            month = "June"; 
+            break;
+        case 7: 
+            month = "July";
+            break;
+        case 8: 
+            month = "August";
+            break;
+        case 9: 
+            month = "September";
+            break;
+        case 10: 
+            month = "October";
+            break;
+        case 11: 
+            month = "November";
+            break;
+        case 12: 
+            month = "December";
+            break;
+        }
+        document.getElementById("month").innerHTML="current month " +month
+        </script>
+</body>
+</html>

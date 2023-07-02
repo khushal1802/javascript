@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object</title>
+</head>
+
+<body>
+    <script>
+        //object declaration
+        var me = {
+            firstname: "khushal",
+            lastname: "vaghasiya",
+            age: 20,
+            today: new Date(),
+            language: "en",
+            get lang() {
+                return this.language;
+            }
+        }
+        console.log(me.today);
+        console.log(me.lang);
+
+
+        //object access
+        var acc = me.firstname;
+        console.log(acc)
+        var acc = me["lastname"];
+        console.log(acc)
+
+        //object method 
+        var me = {
+            firstname: "khushal",
+            lastname: "vaghasiya",
+            age: 20,
+            fullname: function () {
+                return this.firstname.toLocaleUpperCase() + " " + this.lastname.toUpperCase();
+            },
+            language: "",
+            set lang(lang) {
+                this.language = lang;
+            }
+        }
+        me.lang = "gujarati"
+        console.log(me)
+        console.log(me.fullname())
+
+        //object to array
+        var myarr = Object.values(me);
+        console.log(myarr);
+
+        //object stringfy
+        var str = JSON.stringify(me);
+        console.log(str);
+
+
+        //array stringfy
+        var arr = JSON.stringify(myarr);
+        console.log(arr);
+
+
+        // Define an object
+        const obj = { counter: 0 };
+
+        // Define Setters and Getters
+        Object.defineProperty(obj, "reset", {
+            get: function () { this.counter = 0; }
+        });
+        Object.defineProperty(obj, "increment", {
+            get: function () { this.counter++; }
+        });
+        Object.defineProperty(obj, "decrement", {
+            get: function () { this.counter--; }
+        });
+        Object.defineProperty(obj, "add", {
+            set: function (value) { this.counter += value; }
+        });
+        Object.defineProperty(obj, "subtract", {
+            set: function (value) { this.counter -= value; }
+        });
+
+        // Play with counter:
+        obj.reset;
+        obj.add = 5;
+        obj.subtract = 1;
+        obj.increment;
+        obj.decrement;
+        console.log(obj.counter)
+
+
+        //constructors
+        function Person(first, last, age, eye) {
+            this.firstName = first;
+            this.lastName = last;
+            this.age = age;
+            this.eyeColor = eye;
+        }
+        Person.prototype.nationality = "gujarati";
+        const myFather = new Person("John", "Doe", 50, "blue");
+        myFather.nationality = "English";
+        myFather.name = function () {
+            return this.firstName + " " + this.lastName;
+        };
+        console.log(myFather.name())
+        const myMother = new Person("Sally", "Rally", 48, "green");
+
+    </script>
+</body>
+
+</html>

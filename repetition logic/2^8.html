@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2^8</title>
+</head>
+<body>
+    <h1>give 2^8 using for loop</h1>
+    <script>
+    let base = 2;
+    let exponent = 8;
+    let result = 1;
+
+for (let i = 0; i < exponent; i++) {
+  result *= base;
+}
+
+document.write("2^8 = " +result);
+//2*2*2*2*2*2*2*2=256
+
+document.write("<br> <br> <br> using while loop <br>");
+
+let i=0;
+let b = 2;
+    let e = 8;
+    let r = 1;
+while(i<e){
+    r *= b;
+    i++;
+}
+document.write("2^8 = " +r);
+
+    </script>
+</body>
+</html>

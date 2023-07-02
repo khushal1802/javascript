@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+
+<body>
+    <table border="1">
+        <tr>
+            <th>Id:~</th>
+            <th><input type="tel" id="id"></th>
+        </tr>
+        <tr>
+            <th>Name:~</th>
+            <th><input type="text" id="name"></th>
+        </tr>
+        <tr>
+            <th>Email:~</th>
+            <th><input type="email" id="email"></th>
+        </tr>
+        <tr>
+            <th>Phone:~</th>
+            <th><input type="tel" id="phone"></th>
+        </tr>
+        <tr>
+            <th>Address:~</th>
+            <th><textarea rows="2" cols="10" id="address"></textarea></th>
+        </tr>
+        <tr>
+            <th>Password:~</th>
+            <th><input type="password" id="pass"></th>
+        </tr>
+
+        <tr>
+            <th colspan="2"><button style="width: 100%;" type="button" id="submit" onclick="insert()">Submit</button>
+            <button style="width: 100%; display: none;" type="button" id="update" onclick="update()">Update</button></th>
+
+        </tr>
+    </table><br><br><br><br><br>
+    <hr>
+
+    <table border="1px">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone No</th>
+            <th>Address</th>
+            <th>Password</th>
+            <th>Action</th>
+
+        </tr>
+        <tbody id="datatable"></tbody>
+    </table>
+
+</body>
+
+</html>
+<script>
+
+
+    let data = [];
+
+    insert = () => {
+        let id = document.getElementById('id').value;
+        let name = document.getElementById('name').value;
+        let email = document.getElementById('email').value;
+        let phone = document.getElementById('phone').value;
+        let address = document.getElementById('address').value;
+        let password = document.getElementById('pass').value;
+
+        let obj = {
+            userId: id,
+            userName: name,
+            userEmail: email,
+            userPhone: phone,
+            userAddress: address,
+            userPassword: password,
+        }
+
+        if (localStorage.getItem('user') == null) {
+            data.push(obj)
+            localStorage.setItem('user', JSON.stringify(data))
+            view()
+        } else {
+            let val = JSON.parse(localStorage.getItem('user'))
+            val.push(obj)
+            localStorage.setItem('user', JSON.stringify(val))
+            view()
+        }
+
+        document.getElementById('id').value = "";
+        document.getElementById('name').value = "";
+        document.getElementById('email').value = "";
+        document.getElementById('phone').value = "";
+        document.getElementById('address').value = "";
+        document.getElementById('pass').value = "";
+    }
+//display data
+    view = () => {
+        let val = JSON.parse(localStorage.getItem('user'))
+        let tbl = "";
+
+        val.map((v) => {
+
+            tbl += `<tr>
+                <td>${v.userId}</td>
+                <td>${v.userName}</td>
+                <td>${v.userEmail}</td>
+                <td>${v.userPhone}</td>
+                <td>${v.userAddress}</td>
+                <td>${v.userPassword}</td>
+                <td><button onclick='deleteData(${v.userId})''>Delete</button>
+                <td><button onclick='edit(${v.userId})''>Edit</button>
+
+            </tr>`
+        })
+        document.getElementById('datatable').innerHTML = tbl;
+    }
+    view();
+//delete
+    deleteData = (id) => {
+        let val = JSON.parse(localStorage.getItem('user'))
+
+        val.map((v) => {
+            if (v.userId == id) {
+                val.splice(0, 1)
+            }
+            localStorage.setItem('user', JSON.stringify(val))
+        })
+        view();
+    }
+//edit
+    edit = (id) => {
+        document.getElementById('submit').style.display = 'none'
+        document.getElementById('update').style.display = 'block'
+        let val = JSON.parse(localStorage.getItem('user'))
+
+        val.map((v) => {
+
+
+            if (v.userId == id) {
+                document.getElementById('id').value = v.userId
+                document.getElementById('name').value = v.userName
+                document.getElementById('email').value = v.userEmail
+                document.getElementById('phone').value = v.userPhone
+                document.getElementById('address').value = v.userAddress
+                document.getElementById('pass').value = v.userPassword
+            }
+        })
+    }
+//update
+    update = () => {
+        let id = document.getElementById('id').value
+        let name = document.getElementById('name').value
+        let email = document.getElementById('email').value
+        let phone=document.getElementById('phone').value 
+        let address=document.getElementById('address').value
+        let pass = document.getElementById('pass').value
+    
+        let val = JSON.parse(localStorage.getItem('user'))
+    
+        val.map((v) => {
+            if (v.userId == id) {
+                v.userName = name;
+                v.userEmail = email;
+                v.userPhone = phone;
+                v.userAddress = address;
+                v.userPass = pass;
+            }
+            localStorage.setItem('user', JSON.stringify(val))
+        })
+        alert('Your Record Sucessfully Updated')
+        document.getElementById('id').value = '';
+        document.getElementById('name').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('phone').value = '';
+        document.getElementById('address').value = '';
+        document.getElementById('pass').value = '';
+        document.getElementById('submit').style.display = 'block'
+        document.getElementById('update').style.display = 'none'
+
+        view();
+    }
+</script>

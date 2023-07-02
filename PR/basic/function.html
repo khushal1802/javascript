@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function</title>
+</head>
+
+<body>
+    <p id="normal"></p>
+    <p id="pera"></p>
+    <script>
+        //normal function and without parameter
+        function normal() {
+            document.getElementById("normal").innerHTML = "Hello World";
+        }
+        normal();
+        //with Parameter and with out return
+        let a = 10;
+        let b = 20;
+        function info(x, y) {// function invok
+            let sum = x + y;
+            document.write("Sum = " + sum);
+        }
+        info(a, b);//function call
+
+        // with return  
+        function info(a, b) {
+            let sum = a + b;
+            return sum;
+        }
+        document.write(info(x, y));
+
+        // value set 
+        function myFunction(x, y) {
+            if (y === undefined) {
+                y = 2;
+            }
+        }
+        myFunction();
+        // return value
+        function myFunction(x, y = 10) {
+            return x + y;
+        }
+        myFunction(5);
+
+        //normal arrow function
+        let hello = "";
+
+        hello = () => {
+            return "Hello World!";
+        }
+
+        document.getElementById("demo").innerHTML = hello();
+
+        //arrow function with parameter
+        let hello = "";
+
+        hello = (val) => "Hello " + val;
+
+        document.getElementById("demo").innerHTML = hello("Universe!");
+    </script>
+
+
+</body>
+
+</html>

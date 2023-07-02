@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Box</title>
+  <style>
+    .main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: black;
+      margin: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .box:hover {
+      cursor: pointer;
+    }
+
+    #box3 {
+      background-image: url('./car.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    #box3-content {
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    button {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="main">
+    <div class="box" id="box1"></div>
+    <div class="box" id="box2"></div>
+    <div class="box" id="box3">
+      <div id="box3-content">Black thar</div>
+    </div>
+    <button onclick="autoChange()">Auto Change</button>
+  </div>
+
+  <script>
+    // Get references to the boxes
+    const box1 = document.getElementById('box1');
+    const box2 = document.getElementById('box2');
+    const box3 = document.getElementById('box3');
+    const box3Content = document.getElementById('box3-content');
+
+    // Event listener for changing height and width
+    box1.addEventListener('mouseover', function () {
+      box1.style.width = '300px';
+      box1.style.height = '300px';
+    });
+
+    // Event listener for changing color
+    box2.addEventListener('mouseover', function () {
+      const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+      box2.style.backgroundColor = randomColor;
+    });
+
+    // Array of images and content
+    const images = ['.car.jpg', './car1.jpg', './car2.jpg', './car3.jpg', './car4.jpg', './car5.jpg', './car6.jpg', './car7.jpg'];
+    const content = ['Black thar', 'car thar fly','New black thar', 'New thar','Nice black thar','Sunset car thar','black' ,'black new'];
+             //               0           1                   2           3               4               5               6   7
+
+    let currentIndex = 0; // Current index of the images and content array
+
+    // Event listener for changing images and content on hover
+    box3.addEventListener('mouseover', function () {
+      box3.style.backgroundImage = `url('${images[currentIndex]}')`;
+      box3Content.textContent = content[currentIndex];
+      currentIndex = (currentIndex + 1) % images.length; // Move to the next image and content
+    });
+
+    // Reset the styles on mouseout
+    box1.addEventListener('mouseout', resetStyles);
+    box2.addEventListener('mouseout', resetStyles);
+    box3.addEventListener('mouseout', resetStyles);
+
+    function resetStyles() {
+      this.style.width = '200px';
+      this.style.height = '200px';
+      if (this === box2) {
+        this.style.backgroundColor = 'black';
+      } else if (this === box3) {
+        this.style.backgroundImage = `url(./car.jpg')`;
+        box3Content.textContent = 'Black thar';
+      }
+    }
+
+    // Auto change variables
+    let autoChangeInterval;
+    let autoChangeEnabled = false;
+
+    // Auto change function
+    function autoChange() {
+      if (autoChangeEnabled) {
+        clearInterval(autoChangeInterval);
+        autoChangeEnabled = false;
+      } else {
+        autoChangeEnabled = true;
+        autoChangeInterval = setInterval(changeBoxProperties,2000);
+      }
+    }
+
+    // Change box properties function
+    function changeBoxProperties() {
+      box1.style.width = getRandomSize();
+      box1.style.height = getRandomSize();
+      const randomColor = getRandomColor();
+      box2.style.backgroundColor = randomColor;
+      box3.style.backgroundImage = `url('${getRandomImage()}')`;
+      box3Content.textContent = getRandomContent();
+    }
+
+    // Helper function to generate a random size
+    function getRandomSize() {
+      const minSize = 100;
+      const maxSize = 400;
+      const randomSize = Math.floor(Math.random() * (maxSize - minSize + 1)) + minSize;
+      return randomSize + 'px';
+    }
+
+    // Helper function to generate a random color
+    function getRandomColor() {
+      const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+      return randomColor;
+    }
+
+    // Helper function to get a random image from the array
+    function getRandomImage() {
+      const randomIndex = Math.floor(Math.random() * images.length);
+      return images[randomIndex];
+    }
+
+    // Helper function to get a random content from the array
+    function getRandomContent() {
+      const randomIndex = Math.floor(Math.random() * content.length);
+      return content[randomIndex];
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constructor</title>
+</head>
+<body>
+    <script>
+        function me(first,last,age,color){
+            this.firstname =first;
+            this.lastname=last;
+            this.age=age;
+            this.eyecolor=color;
+        }
+        const myfather=new me("sanjay"," savaliya","40", "brown");
+        console.log(me);
+        document.write(myfather.age);
+        myfather.nationality="English";
+        const mymother=new me("sangita","savaliya","45","black");
+        document.write(mymother.lastname);
+
+
+        const myinfo={
+            first:"akash",
+            last:"savaliya",
+            age:"20",
+            color:"brown",
+            language:"No",
+            set lang(value){
+                console.log(value);
+                this.language=value;
+            }
+        };
+        myinfo.lang="English";
+        console.log(myinfo);
+    </script>
+</body>
+</html>

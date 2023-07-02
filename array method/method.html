@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array method</title>
+    <style>
+        h1{
+            color: blue;
+            text-align: center;
+        }
+        button{
+            padding: 20px 30px;
+            border-radius: 10px;
+            background-color: blue;
+            color: black;
+            border: none;
+            margin-left: 900px;
+            transition: all 0.5s;
+        }
+        button:hover{
+            background-color: black;
+            color: white;
+        }
+        p{
+            color: black;
+            font-size: 20px;
+            text-align: center;
+
+        }
+    </style>
+</head>
+<body>
+    <h1>Array method</h1><hr>
+    <button onclick="method()">Event</button><hr>
+
+    <p id="arr"></p>
+    <p id="len"></p>
+    <p id="sort"></p>
+    <p id="rev"></p>
+    <p id="shift"></p>
+    <p id="unshift"></p>
+    <p id="pop"></p>
+    <p id="push"></p>
+    <p id="con"></p>
+    <p id="sp"></p>
+    <p id="sl"></p>
+    <p id="delet"></p>
+    <p id="flat"></p>
+    <p id="join"></p>
+
+
+
+    <script>
+        // Array method
+        function method(){
+        let ipl=['GT','MI','CSK','RCB','DC',];
+        let sec=['RR','KKR','SRH','LSG'];
+        
+        document.getElementById('arr').innerHTML="Array : "+ipl +"<br><hr>";
+        //Array length
+        var size=ipl.length;
+        document.getElementById('len').innerHTML="Array length : "+size+"<br><hr>";
+
+        //Array sort
+        document.getElementById('sort').innerHTML="Array sort method: "+ipl.sort()+"<br><hr>";
+
+        //Array reverse
+        document.getElementById('rev').innerHTML="Array reverse method: "+ipl.reverse()+"<br><hr>";
+
+        //Array shift
+        document.getElementById('shift').innerHTML="Array shift method: "+ipl.shift()+"<br><hr>";
+
+        //Array unshift
+        let usf=ipl.unshift('RR')
+        document.getElementById('unshift').innerHTML="Array unshift method: " +ipl+"<br><hr>";
+
+         //Array pop
+         document.getElementById('pop').innerHTML="Array pop method: "+ipl.pop()+"<br><hr>";
+
+        //Array push
+        let push=ipl.push('KKR')
+        document.getElementById('push').innerHTML="Array push method: " +ipl+"<br><hr>";
+
+        //Array concat
+        let con=ipl.concat(sec)
+        document.getElementById('con').innerHTML="Array concat method: " +con+"<br><hr>";
+
+        //Array splice
+        document.getElementById('sp').innerHTML="Array splice method: " +ipl.splice(1,2)+"<br><hr>";
+
+        //Array slice
+        document.getElementById('sl').innerHTML="Array splice method: " +ipl.splice(1)+"<br><hr>";
+
+        //Array delete
+        document.getElementById('delet').innerHTML="Array delete method: " +delete ipl[0]+"<br><hr>";
+
+        //Array flat
+        let myteam=[['GT'],['MI'],['RCB'],['CSK']]
+        let flat=myteam.flat();
+          document.getElementById('flat').innerHTML="Array flat method: " +flat+"<br><hr>";
+
+        //Array join
+        let ipl1=['GT','MI','CSK','RCB','DC',];
+        document.getElementById('join').innerHTML="Array join method: " +ipl1.join('_')+"<br><hr>";
+
+        }
+
+        
+    </script>
+</body>
+</html>

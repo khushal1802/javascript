@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sum</title>
+</head>
+<body>
+    <h1>sum of 10  number</h1>
+
+    <script>
+        let sum=0;
+        let n=parseInt(prompt("Enter number of sum : "));
+        for(let i=1; i<=n; i++)
+        {
+            document.write(i+"<br>")
+            sum=sum+i;
+        }
+        document.write("sum = "+sum);
+
+document.write("<br> <br> <br> using while loop <br>");
+let i=1;
+sub=0;
+while(i<=n){
+    document.write(i+"<br>")
+            sub=sub+i;
+            i++;
+}
+document.write("sub = "+sub);
+
+    </script>
+
+</body>
+</html>

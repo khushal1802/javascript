@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator using if_else</title>
+</head>
+<body>
+    <h1>Basic calculator using if_else</h1>
+    <p id="ans"></p>
+    <script>
+        var ans;
+        var opretor=prompt("Enter opretor (+,-,*,/) :");
+        const a=parseInt(prompt("Enter value a:"));
+        const b=parseInt(prompt("Enter value b:"));
+
+       if(opretor=='+'){
+        ans=a+b;
+        document.getElementById("ans").innerHTML="Addition = " +ans;
+       }else if(opretor=='-'){
+        ans=a-b;
+        document.getElementById("ans").innerHTML="Subtraction = " +ans;
+       }else if(opretor=='*'){
+        ans=a*b;
+        document.getElementById("ans").innerHTML="Multiplication = " +ans;
+       }else if(opretor=='/'){
+        ans=a/b;
+        document.getElementById("ans").innerHTML="Division = " +ans;
+       }else{
+        document.write("invlid opretor...!");
+       }
+    </script>
+    
+</body>
+</html>

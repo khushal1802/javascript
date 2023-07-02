@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String</title>
+</head>
+<body>
+    <script>
+        var str = "Hello World";
+        console.log(str.length);
+        var str = "Hello World";
+        console.log(str.toUpperCase());
+        var str = "Hello World";
+        console.log(str.toLowerCase());
+               
+        //string method
+        var str = "Hello World";
+        console.log(str.charAt(0));
+        var str = "Hello World";
+        console.log(str.charAt(1));
+        var str = "Hello World";
+        console.log(str.charAt(str.length-1));
+        var str = "Hello World";
+
+        //string concat method
+        var str = "Hello World";
+        console.log(str.concat(" How are you?"));
+
+        //replace method
+        var str = "Hello World";
+        console.log(str.replace('World', 'hii'));
+        var str = "Hello World";
+        console.log(str.replaceAll('l','k'));
+
+        //substring and substr method
+        var str = "Hello World";
+        console.log(str.substring(6,12));
+        var str = "Hello World";
+        console.log(str.substr(6,12));
+         var str = "Hello World";
+        console.log(str.slice(6,12));
+
+
+        //string trim method
+        var str = "             Hello World             ";
+        console.log(str.trim());
+        console.log(str.trimStart());
+        console.log(str.trimEnd());
+
+        //pad method
+        var str = "Hello World";
+        console.log(str.padStart(15));
+        var str = "Hello World";
+        console.log(str.padEnd(15));
+
+        //split method
+        var str = "Hello World";
+        console.log(str.split(' '));
+
+
+        //string search
+        var str = "Hello World";
+        console.log(str.indexOf("World"));
+        var str = "Hello World";
+        console.log(str.lastIndexOf("rld"));
+        var str = "Hello World";
+        console.log(str.search("World"));
+        
+
+        //string match for using array
+        var str = "Hello World";
+        console.log(str.match("World"));
+        var str = "Hello World";
+        console.log(str.matchAll("World"));
+
+        //String includes
+        var str = "Hello World";
+        console.log(str.includes("World"));
+        var str = "Hello World";
+        console.log(str.startsWith("World"));
+        var str = "Hello World";
+        console.log(str.endsWith("World"));
+    </script>
+</body>
+</html>

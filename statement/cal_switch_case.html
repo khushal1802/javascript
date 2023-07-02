@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator using switch case</title>
+</head>
+<body>
+    <h1>Basic calculator using switch case</h1>
+    <p id="ans"></p>
+    <script>
+        var ans;
+        var opretor=prompt("Enter opretor (+,-,*,/) :");
+        const a=parseInt(prompt("Enter value a:"));
+        const b=parseInt(prompt("Enter value b:"));
+
+        switch(opretor){
+            case '+':
+                ans=a+b;
+                document.getElementById("ans").innerHTML="Addition = " +ans;
+                break;
+            case '-':
+                ans=a-b;
+                document.getElementById("ans").innerHTML="Subtraction = " +ans;
+                break;
+            case '*':
+                ans=a*b;
+                document.getElementById("ans").innerHTML="Multiplication = " +ans;
+                break;
+            case '/':
+                ans=a/b;
+                document.getElementById("ans").innerHTML="Division = " +ans;
+                break;
+                default:
+                    document.write("invlid opretor...!");
+        }
+    </script>
+    
+</body>
+</html>

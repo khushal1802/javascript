@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event_Listener</title>
+  <style>
+    #myElement {
+        width: 300px;
+        height: 200px;
+        background-color: lightblue;
+        margin-top: 20px;
+        text-align: center;
+        line-height: 200px;
+        cursor: pointer;
+        font-size: 20px;
+      }
+      
+  </style>
+</head>
+<body>
+    <div id="myElement">Mouse and Key Events</div>
+<script>
+    var myElement = document.getElementById("myElement");
+
+    // Mouse events
+    myElement.addEventListener("click", function() {
+      myElement.textContent = "Clicked";
+    });
+    myElement.addEventListener("dblclick", function() {
+      myElement.textContent = "Double Clicked";
+    });
+    myElement.addEventListener("mouseover", function() {
+      myElement.style.backgroundColor = "lightgreen";
+    });
+    myElement.addEventListener("mouseout", function() {
+      myElement.style.backgroundColor = "lightblue";
+    });
+    myElement.addEventListener("mousemove", function(event) {
+      var x = event.clientX;
+      var y = event.clientY;
+      myElement.textContent = "Mouse position: " + x + ", " + y;
+    });
+    
+    // Key events
+    document.addEventListener("keydown", function(event) {
+      var key = event.key;
+      myElement.textContent = "Key Pressed: " + key;
+    });
+    document.addEventListener("keyup", function(event) {
+      var key = event.key;
+      myElement.textContent = "Key Released: " + key;
+    });
+    document.addEventListener("keypress", function(event) {
+      var key = event.key;
+      myElement.textContent = "Key Typed: " + key;
+    });
+    
+
+    setInterval(function() {
+        var randomColor = getRandomColor();
+        myElement.style.backgroundColor = randomColor;
+      }, 1000);
+      
+      function getRandomColor() {
+        var letters = "0123456789ABCDEF";
+        var color = "#";
+        for (var i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      }
+
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Registration Form</title>
+  <style>
+    .error {
+      color: red;
+    }
+    table {
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h2>User Registration Form</h2>
+  <form id="registrationForm" onsubmit="registerUser(event)">
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" id="name" required>
+      <span id="nameError" class="error"></span>
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
+      <span id="emailError" class="error"></span>
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" required>
+      <span id="passwordError" class="error"></span>
+    </div>
+    <div>
+      <input type="submit" value="Register">
+    </div>
+  </form>
+
+  <h2>Registered Users</h2>
+  <table id="userTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody id="userTableBody">
+    </tbody>
+  </table>
+
+  <script>
+    function registerUser(event) {
+      event.preventDefault();
+
+      // Get form values
+      const nameInput = document.getElementById('name');
+      const emailInput = document.getElementById('email');
+      
+
+      // Clear previous errors
+      document.getElementById('nameError').textContent = '';
+      document.getElementById('emailError').textContent = '';
+
+      try {
+        // Validate form inputs
+        if (nameInput.value.trim() === '') {
+          throw new Error('Name is required');
+        }
+
+        if (!isValidEmail(emailInput.value)) {
+          throw new Error('Invalid email');
+        }
+
+        // Create user object
+        const user = {
+          name: nameInput.value,
+          email: emailInput.value
+        };
+
+        // Add user to registeredUsers array
+        registeredUsers.push(user);
+
+        // Update the HTML table with the new user
+        const userTable = document.getElementById('userTableBody');
+        const newRow = userTable.insertRow();
+        const nameCell = newRow.insertCell();
+        const emailCell = newRow.insertCell();
+
+        nameCell.textContent = user.name;
+        emailCell.textContent = user.email;
+
+        // Clear form inputs
+        nameInput.value = '';
+        emailInput.value = '';
+
+        // Print registered users array in the console
+        console.log(registeredUsers);
+      } catch (error) {
+        // Handle errors
+        if (error.message.includes('name')) {
+          document.getElementById('nameError').textContent = error.message;
+        } else if (error.message.includes('email')) {
+          document.getElementById('emailError').textContent = error.message;
+        } else {
+          console.error(error);
+        }
+      }
+    }
+
+    function isValidEmail(email) {
+      // Use regular expression to validate email format
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+
+    // Array to store registered users
+    const registeredUsers = [];
+
+  </script>
+</body>

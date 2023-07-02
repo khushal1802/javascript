@@ -1,0 +1,156 @@
+ <!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <style>
+        .myBox {
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 400px;
+            height: 200px;
+            background-color: rgb(164 173 167 / 50%);
+            transition: all 0.6s;
+            overflow: hidden;
+        }
+
+        #imageBox {
+            margin: 10px;
+            max-width: 100% !important;
+            transition: all 0.6s;
+        }
+
+        button {
+            margin: 20px auto;
+            padding: 20px;
+            font-size: 30px;
+            display: flex;
+            color: #FFF;
+            background-color: rgb(143, 139, 139);
+            cursor: pointer;
+        }
+
+        #pText {
+            z-index: 9999;
+            font-size: 30px;
+            text-align: center;
+            color: #fff;
+            position: absolute;
+            margin: 0 !important;
+            padding: 87px 82px;
+            background-color: rgba(0, 0, 0, 0.5);
+            transition: all 0.6s;
+        }
+    </style>
+</head>
+
+<body style="background: #000; ">
+
+    <button id="bgcol" onclick="myClick()"> <span id="butText"> magical box</span> </button>
+
+    <div id="box1" class="myBox"></div>
+    <div id="box2" class="myBox"></div>
+    <div id="box3" style="padding: 5px; position: relative;" class="myBox">
+        <img id="imageBox" src="./car.jpg" alt="Image" />
+        <p id="pText">Black Thar</p>
+    </div>
+
+    <script>
+
+        // box No. 1 in chenge height & width onclick
+
+        function heightChange() {
+            document.getElementById(`box1`).style.height = "100px";
+            document.getElementById(`box1`).style.width = "100px";
+            document.getElementById(`box1`).style.backgroundColor = "#FFF";
+        }
+
+        // box No .2 color change code on onclick 
+
+        // color of Array
+        var colors = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6',
+            '#E6B333', '#3366E6', '#999966', '#99FF99', '#B34D4D',
+            '#80B300', '#809900', '#E6B3B3', '#6680B3', '#66991A',
+            '#FF99E6', '#CCFF1A', '#FF1A66', '#E6331A', '#33FFCC',
+            '#66994D', '#B366CC', '#4D8000', '#B33300', '#CC80CC',
+            '#66664D', '#991AFF', '#E666FF', '#4DB3FF', '#1AB399',
+            '#E666B3', '#33991A', '#CC9999', '#B3B31A', '#00E680',
+            '#4D8066', '#809980', '#E6FF80', '#1AFF33', '#999933',
+            '#FF3380', '#CCCC00', '#66E64D', '#4D80CC', '#9900B3',
+            '#E64D66', '#4DB380', '#FF4D4D', '#99E6E6', '#6666FF'];
+        var currentcolor = 0;
+
+        function changeBoxColor() {
+            var box = document.getElementById('box2').style.backgroundColor = colors[currentcolor];
+            currentcolor = (currentcolor + 1) % colors.length;
+        }
+
+
+        // Box No. 3 Images and Text cheng code 
+
+        // This code is Image Array 
+
+        imageBox = ['./car.jpg', './car1.jpg', './car2.jpg', './car3.jpg', './car4.jpg', './car5.jpg', './car6.jpg', './car7.jpg' ];
+        var currentIndex = 0;
+
+        // This code is Text Array  
+
+        var Text = [
+        'Black thar', 'car thar fly','New black thar', 'New thar','Nice black thar','Sunset car thar','black' ,'black new'
+        ];
+        var currentTaxt = 0;
+
+        // Box No. 3 function codision added
+
+        function changeImage() {
+
+            var img = document.getElementById("imageBox");
+            img.src = imageBox[currentIndex];
+            currentIndex = (currentIndex + 1) % imageBox.length;
+
+
+
+        }
+
+
+        // all function is call In myClick() function 
+        function myClick() { 
+
+            var colors = ['#6666FF', '#809980', '#E6FF80', '#1AFF33', '#999933',
+                '#FF99E6', '#CCFF1A', '#FF1A66', '#E6331A', '#33FFCC',
+                '#4D8066', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6',
+                '#80B300', '#809900', '#E6B3B3', '#6680B3', '#66991A',
+                '#66994D', '#B366CC', '#4D8000', '#B33300', '#CC80CC',
+                '#66664D', '#991AFF', '#E666FF', '#4DB3FF', '#1AB399',
+                '#E6B333', '#3366E6', '#999966', '#99FF99', '#B34D4D',
+                '#E666B3', '#33991A', '#CC9999', '#B3B31A', '#00E680',
+                '#FF3380', '#CCCC00', '#66E64D', '#4D80CC', '#9900B3',
+                '#E64D66', '#4DB380', '#FF4D4D', '#99E6E6', '#FF6633'];
+            var currentBut = 0;
+
+            let but = document.getElementById("butText");
+            setInterval(() => {
+                but.style.color = colors[currentBut];
+                currentBut = (currentBut + 1) % colors.length;
+            }, 1000);
+
+            heightChange()
+            setInterval(changeBoxColor, 1000);
+            setInterval(changeImage, 2000);
+            let text1 = document.getElementById("pText");
+            setInterval(() => {
+                text1.innerHTML = Text[currentTaxt];
+                currentTaxt = (currentTaxt + 1) % Text.length;
+            },2000);
+
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>

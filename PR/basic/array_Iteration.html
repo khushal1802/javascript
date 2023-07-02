@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Iteration</title>
+</head>
+
+<body>
+    <script>
+
+        //array for each
+        var arr = [10, 20, 30, 40, 50];
+        var text = "";
+        arr.forEach(foreach);
+
+        function foreach(value, index, array) {
+            text += value + "<br>";
+        }
+        console.log(text)
+
+        //array map
+        var arr = [10, 20, 30, 40, 50];
+        var map = arr.map(mapfun);
+        console.log(map)
+        function mapfun(value, index, array) {
+            return value * 2;
+        }
+
+        //array flatmap
+        var arr = [10, 20, 30, 40, 50];
+        var fmap = arr.flatMap((x) => x * 2);
+        console.log(fmap)
+
+        //array filter
+        var arr = [10, 20, 30, 40, 50];
+        var fil = arr.filter(fill)
+        console.log(fil);
+        function fill(value, index, array) {
+            return value > 20;
+        }
+
+        //array reduce
+        var arr = [10, 20, 30, 40, 50];
+        var reduce = arr.reduce(reduc)
+        console.log(reduce);
+        function reduc(total, value, index, array) {
+            return total + value;
+        }
+
+        //array reducright
+        var arr = [10, 20, 30, 40, 50];
+        var right = arr.reduceRight(reducright)
+        console.log(right);
+        function reducright(total, value, index, array) {
+            return total + value;
+        }
+
+        //array every
+        var arr = [10, 20, 30, 40, 50];
+        var eve = arr.every(every)
+        console.log(eve)
+        function every(value, index, array) {
+            return value > 20;
+        }
+
+        //array some
+        var arr = [10, 20, 30, 40, 50];
+        var some = arr.some(some)
+        console.log(some)
+        function some(value, index, array) {
+            return value > 20;
+        }
+
+        //array index
+        var arr = [10, 20, 30, 40, 50];
+        var ind = arr.indexOf(20);
+        console.log(ind)
+
+        //array lastindex
+        var arr = [10, 20, 30, 40, 50];
+        var lind = arr.lastIndexOf(40);
+        console.log(lind);
+
+        //array find 
+        var arr = [10, 20, 30, 40, 50];
+        var find = arr.find(find)
+        console.log(find)
+        function find(value, index, arr) {
+            return value > 30
+        }
+
+        //array findindex
+        var arr = [10, 20, 30, 40, 50];
+        var findind = arr.findIndex(findind)
+        console.log(findind)
+        function findind(value, index, arr) {
+            return value > 30
+        }
+
+        //array .form
+        const form = Array.from("ABCDEFG");
+        console.log(form);
+
+        //array key
+        var arr = [10, 20, 30, 40, 50];
+        var key = arr.keys();
+        var text = "";
+        for (let x of key) {
+            text += x + "<br>";
+        }
+        console.log(text);
+
+        //array entries
+        const f = arr.entries();
+        for (let x of f) {
+            console.log(x)
+        }
+
+        //arary includes
+        var inc = arr.includes(60);
+        console.log(inc);
+
+        //array spread
+        const q1 = ["Jan", "Feb", "Mar"];
+        const q2 = ["Apr", "May", "Jun"];
+        const q3 = ["Jul", "Aug", "Sep"];
+        const q4 = ["Oct", "Nov", "Dis"];
+
+        const year = [...q1, ...q2, ...q3, ...q4];
+        console.log(year)
+    </script>
+</body>
+
+</html>

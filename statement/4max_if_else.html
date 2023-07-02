@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4 max number</title>
+</head>
+
+<body>
+    <h1>max of 4 number</h1>
+    <script>
+        let a = parseInt(prompt("Enter value of A : "));
+        let b = parseInt(prompt("Enter value of B : "));
+        let c = parseInt(prompt("Enter value of C : "));
+        let d = parseInt(prompt("Enter value of D : "));
+
+        if (a > b) {
+            if (a > c) {
+                if (a > d) {
+                    document.write("A is big");
+                } else
+                    document.write("D is big");
+            } else if (c > d) {
+                document.write("C is big");
+            } else {
+                document.write("D is big");
+            }
+        } else if (b > c) {
+            if (b > d) {
+                document.write("B is big");
+            } else {
+                document.write("D is big");
+            }
+        } else if (c > d) {
+            document.write("C is big");
+        } else {
+            document.write("D is big");
+        }
+    </script>
+</body>
+
+</html>

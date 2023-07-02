@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Iteration</title>
+    <style>
+        h1{
+            color: blue;
+            text-align: center;
+        }
+        button{
+            padding: 20px 30px;
+            border-radius: 10px;
+            background-color: blue;
+            color: black;
+            border: none;
+            margin-left: 900px;
+            transition: all 0.5s;
+        }
+        button:hover{
+            background-color: black;
+            color: white;
+        }
+        p{
+            color: black;
+            font-size: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Array Iteration</h1><hr>
+
+    <button onclick="method()">Event</button><hr>
+
+    <p id="for"></p>
+    <p id="map"></p>
+    <p id="fm"></p>
+    <p id="reduce"></p>
+    <p id="find"></p>
+    <p id="fil"></p>
+    <p id="some"></p>
+    <p id="key"></p>
+    <p id="entries"></p>
+    <p id="no"></p>
+
+
+    <script>
+        function method() {
+
+            // Array Iteration forEach 
+            const numbers = [1, 2, 3, 4, 5, 6];
+            let no = "";
+            numbers.forEach(myForeach);
+            document.getElementById("for").innerHTML = "Array forEach Iteration : " + no+"<br><hr>";
+
+            function myForeach(value, index, array) {
+                no += value + "<br>";
+            }
+
+            // Array Iteration map 
+            const n = numbers.map(myMap);
+            document.getElementById("map").innerHTML = "Array map Iteration : " + n+"<br><hr>";
+            function myMap(value, index, array) {
+                return value * 2;
+            }
+
+            //Array Iteration flatMap
+            const f = numbers.flatMap((x) => x * 2);
+            document.getElementById("fm").innerHTML = "Array flatmap Iteration : " + f+"<br><hr>";
+
+            // Array Iteration reduce
+            let sum = numbers.reduce(myReduce);
+            document.getElementById("reduce").innerHTML = "Array reduce Iteration : " + n+"<br><hr>";
+            function myReduce(total, value, index, array) {
+                return total + value;
+            }
+
+            // Array Iteration find
+            let first = numbers.find(myFind);
+            document.getElementById("find").innerHTML = "First number over 5 :" + first+"<br><hr>";
+            function myFind(value, index, array) {
+                return value > 5;
+            }
+
+            // Array Iteration filter
+            const fil = numbers.filter(myFilter);
+            document.getElementById("fil").innerHTML = "Array filter Iteration:" + fil+"<br><hr>";
+            function myFilter(value, index, array) {
+                return value > 2;
+            }
+
+            // Array Iteration some
+            let some = numbers.some(mySome);
+            document.getElementById("some").innerHTML = "Array some Iteration:" + some+"<br><hr>";
+            function mySome(value, index, array) {
+                return value > 3;
+            }
+
+            // Array Iteration key
+            const keys = numbers.keys();
+            let k = "";
+            for (let x of keys) {
+                k += x + "<br>";
+            }
+            document.getElementById("key").innerHTML = "Array key Iteration:" + k+"<br><hr>";
+
+            // Array Iteration entries 
+            const entries = numbers.entries();
+            for (let x of entries) {
+                document.getElementById("entries").innerHTML += "Array entries Iteration: =" + x + "<br>"+"<br><hr>";
+            }
+            // Array Iteration Spread (...)
+            const q1 = ["1", "2", "3"];
+            const q2 = ["4", "5", "6"];
+            const q3 = ["7", "8", "9"];
+           
+
+            const cal = [...q1, ...q2, ...q3];
+            document.getElementById("no").innerHTML = "Array spread Iteration: "+cal+"<br><hr>";
+        }
+
+    </script>
+</body>
+
+</html>

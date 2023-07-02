@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic</title>
+</head>
+<body>
+    <p id="demo"></p>
+
+    <script>
+        console.log("Hello wold");
+        document.write("Hello wold");
+        document.getElementById("demo").innerHTML="Hiii";
+        alert("alert")
+        var a=10;
+        const b=20; //fix value
+        let c=30;//over ride opretor
+
+        //arithmetic opretor
+        a+b;//Addition
+        a-b;//Subtraction
+        a*b;//	Multiplication
+        a/b;//Division
+        a++;//Increment
+        --a;//decrement
+        a**2;//Exponentiation
+        a%b;//Modulus 
+        
+        //assignment opretor
+        a+=b;
+        a-=b;
+        a*=c;
+        a/=c;
+
+        //logical opretor
+        a&&b;
+        a||b;
+        a??b;
+
+        //comparison opretor
+        a==b; //check for value
+        a===b; //check for value and type
+        a!=b;
+        a!==b;
+        a<b;
+        a>b;
+        a<=b;
+        a>=b;
+        //string opretor
+        var name="Rahul";//string
+        var age=20;//number
+        var arr=[1,2,3,4];//array
+        var bol=true; ///Boolean
+        var ob={firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};//object
+        var bi=BigInt(1234567890);//bigint
+        var n="";//null
+        var u;//Undefined
+        let id = Symbol('id');//symbol
+        ob[id] = 140353;
+
+        arr[2];//array access
+        ob.age;//object access
+        typeof bol;//type check 
+
+
+        var p=parseInt(prompt("Enter value"));
+        
+    </script>
+
+</body>
+</html>

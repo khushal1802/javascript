@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <style>
+    .calculator {
+      max-width: 300px;
+      height: 480px;
+      margin: 0 auto;
+      padding: 10px;
+      text-align: center;
+      background-color: black;
+      border: 1px solid black;
+      border-radius: 10px;
+    }
+
+    .screen {
+      width: 80%;
+      padding: 5px;
+      margin-left: 20px;
+      background-color: rgba(29, 86, 17, 0.5);
+      border: 1px solid white;
+      color: white;
+      height: 50px;
+      margin-bottom: 50px;
+      margin-top: 10px;
+    }
+
+    marquee {
+      font-weight: 700;
+      letter-spacing: 3px;
+      font-size: 28px;
+    }
+
+    input {
+      background-color: transparent;
+      color: white;
+      font-size: 20px;
+      font-weight: 500;
+      border: none;
+      padding-bottom: 20px;
+    }
+
+    :focus {
+      outline: none;
+    }
+
+    .calculator .buttons button {
+      width: 50px;
+      height: 50px;
+      margin: 10px;
+      font-size: 20px;
+      font-weight: 700;
+      border-radius: 50px;
+      border: 1px solid white;
+      color: white;
+      background-color: black;
+      box-shadow: 5px 5px 5px 0px gray;
+      transition: all 0.5s;
+    }
+
+    .calculator .buttons button:hover {
+      color: black;
+      background-color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="calculator">
+    <div class="screen">
+      <marquee width="80%" style="color: white;" id="no">My Calculator</marquee>
+      <input type="text" id="result" readonly>
+    </div>
+    <div class="buttons">
+      <button onclick="clearResult()" id="ac">Ac</button>
+      <button onclick="remove('<-')" id="arr"><-</button>
+          <button onclick="calculateResult()" id="ec">=</button>
+          <button onclick="clearResult()" id="c">C</button>
+
+
+          <button onclick="appendValue(7)" id="7">7</button>
+          <button onclick="appendValue(8)" id="8">8</button>
+          <button onclick="appendValue(9)" id="9">9</button>
+          <button onclick="appendValue('/')" id="div">/</button>
+
+
+          <button onclick="appendValue(4)" id="4">4</button>
+          <button onclick="appendValue(5)" id="5">5</button>
+          <button onclick="appendValue(6)" id="6">6</button>
+          <button onclick="appendValue('*')" id="mul">*</button>
+
+
+          <button onclick="appendValue(1)" id="1">1</button>
+          <button onclick="appendValue(2)" id="2">2</button>
+          <button onclick="appendValue(3)" id="3">3</button>
+          <button onclick="appendValue('-')" id="sub">-</button>
+
+
+          <button onclick="appendValue(0)" id="0">0</button>
+          <button onclick="appendValue('00')" id="00">00</button>
+          <button onclick="appendValue('.')" id="dot">.</button>
+          <button onclick="appendValue('+')" id="sum">+</button>
+
+
+
+    </div>
+  </div>
+
+  <script>
+    function appendValue(value) {
+      document.getElementById('result').value += value;
+      document.getElementById('no').style.display = "none";
+    }
+    function clearResult() {
+      document.getElementById('result').value = '';
+    }
+    function calculateResult() {
+      var result = document.getElementById('result').value;
+      var answer = eval(result);
+      document.getElementById('result').value = answer;
+    }
+    function remove() {
+      var display = document.getElementById('result').value
+      document.getElementById('result').value = display.slice(0, -1);
+    }
+    document.addEventListener('keypress', function (event) {
+      var key = event.key;
+      console.log(key)
+      if (key === 'Enter') {
+        calculateResult();
+      } else if (key === 'c') {
+        clearResult();
+      } else if (!isNaN(key) || key === '+' || key === '-' || key === '*' || key === '/' || key === '.') {
+        appendValue(key);
+      }
+    });
+    document.addEventListener('keyup', function (event) {
+      var key = event.key.toLowerCase();
+      if (key === 'c') {
+        location.reload();
+      }
+    });
+
+  </script>
+</body>
+
+</html>

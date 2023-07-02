@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>User Registration Form</title>
+  <style>
+    .error {
+      color: red;
+    }
+
+    table {
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      border: 1px solid black;
+      padding: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>User Registration Form</h2>
+  <form name="myform" id="registrationForm" onsubmit="registerUser(event)">
+
+    Name:~
+    <input type="text" id="name">
+    <span id="nameError" class="error" required></span><br><br><hr>
+
+    Email:~
+    <input type="email" id="email">
+    <span id="emailError" class="error" required></span><br><br><hr>
+
+    Phone No:~
+    <input type="tel" id="phone" maxlength="10">
+    <span id="phoneError" class="error" required></span><br><br><hr>
+
+    Gender:~
+    <input type="radio" id="male" name="gender" value="male">
+    <label for="male">Male</label>
+    <span id="maleError" class="error"></span>
+
+    <input type="radio" id="female" name="gender" value="female">
+    <label for="female">Female</label><br>
+    <span id="femaleError" class="error"></span><br><br><hr>
+
+
+    Address:~
+    <textarea rows="3" cols="20" id="address"></textarea><br><br><hr>
+
+    <input type="submit" value="Register"><br><br>
+
+  </form>
+
+  <h2>Registered Users</h2>
+  <table id="userTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Gender</th>
+      </tr>
+    </thead>
+    <tbody id="userTableBody"></tbody>
+  </table><hr>
+
+  <h3>Male names</h3>
+  <table id="maleNamesTable" border="1">
+    <tr>
+      <th>Name</th>
+      <th>Phone number</th>
+      <th>Email</th>
+    </tr>
+  </table><hr>
+
+  <script>
+    function registerUser(event) {
+      event.preventDefault();
+
+      // Get form values
+      const nameInput = document.getElementById('name');
+      const emailInput = document.getElementById('email');
+      const phoneInput = document.getElementById('phone');
+      const genderInput = document.querySelector('input[name="gender"]:checked');
+
+      // Clear previous errors
+      document.getElementById('nameError').textContent = '';
+      document.getElementById('emailError').textContent = '';
+      document.getElementById('phoneError').textContent = '';
+      document.getElementById('maleError').textContent = '';
+      document.getElementById('femaleError').textContent = '';
+
+      try {
+        // Validate form inputs
+        if (nameInput.value.trim() === '') {
+          throw new Error('Name is required');
+        }
+        if(nameInput.length<3 || nameInput.length>20){
+          throw new Error("Name length should be between 3 to 20") ;
+        }
+        if (!isValidEmail(emailInput.value)) {
+          throw new Error('Invalid email');
+        }
+
+        // Create user object
+        const user = {
+          name: nameInput.value,
+          email: emailInput.value,
+          phone: phoneInput.value,
+          gender: genderInput.value
+        };
+
+        // Add user to registeredUsers array
+        registeredUsers.push(user);
+
+        // Clear the form inputs
+        document.forms['myform'].reset();
+
+        // Clear the table
+        clearTable();
+
+        // Re-render the table
+        renderTable(registeredUsers);
+
+        // Update the HTML table with the new user
+        const userTable = document.getElementById('userTableBody');
+        const newRow = userTable.insertRow(-1);
+        const nameCell = newRow.insertCell(0);
+        const emailCell = newRow.insertCell(1);
+        const phoneCell = newRow.insertCell(2);
+        const genderCell = newRow.insertCell(3);
+
+
+        nameCell.textContent = user.name;
+        emailCell.textContent = user.email;
+        phoneCell.textContent = user.phone;
+        genderCell.textContent = user.gender;
+
+
+        // Clear form inputs
+        nameInput.value = '';
+        emailInput.value = '';
+        phoneInput.value = '';
+        genderInput.value = '';
+
+        // Print registered users array in the console
+        console.log(registeredUsers);
+      } catch (error) {
+        // Handle errors
+        if (error.message.includes('name')) {
+          document.getElementById('nameError').textContent = error.message;
+        } else if (error.message.includes('email')) {
+          document.getElementById('emailError').textContent = error.message;
+        } else {
+          console.error(error);
+        }
+      }
+    }
+
+    function isValidEmail(email) {
+      // Use regular expression to validate email format
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+
+    // Array to store registered users
+    const registeredUsers = [];
+
+    function clearTable() {
+      var maleNamesTable = document.getElementById("maleNamesTable");
+      while (maleNamesTable.rows.length > 1) {
+        maleNamesTable.deleteRow(1);
+      }
+    }
+
+    function renderTable(data) {
+
+      var maleNamesTable = document.getElementById("maleNamesTable");
+
+      data.map(function (item) {
+        if (item.gender === `male`) {
+          var maleRow = maleNamesTable.insertRow(-1);
+
+          var maleNameCell = maleRow.insertCell(0);
+          maleNameCell.innerHTML = item.name;
+
+          var malePhoneCell = maleRow.insertCell(1);
+          malePhoneCell.innerHTML = item.phone;
+
+          var maleEmailCell = maleRow.insertCell(2);
+          maleEmailCell.innerHTML = item.email;
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>day for if else</title>
+</head>
+
+<body>
+  <h2>JavaScript program day for if else </h2>
+
+  <p id="demo"></p>
+
+  <script>
+    let day = (prompt("enter day first letter (S,M,T,W,t,F,s): "));
+    if (day == 'S') {
+      day = "Sunday";
+    } else if (day == 'M') {
+      day = "Monday";
+    } else if (day == 'T') {
+      day = "Tuesday";
+    } else if (day == 'W') {
+      day = "Wednesday";
+    } else if (day == 't') {
+      day = "Thursday";
+    } else if (day == 'F') {
+      day = "Friday"
+    } else if (day == 's') {
+      day = "Saturday"
+    } else {
+      document.write("Enter valid value")
+    }
+
+    document.getElementById("demo").innerHTML = "Today is " + day;
+  </script>
+</body>
+
+</html>

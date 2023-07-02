@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tip Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+        }
+        .main {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main .circle {
+            height: 300px;
+            width: 300px;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .main .circle-1 {
+            background-color: #0055ff;
+            top: 10%;
+            left: 30%;
+        }
+
+        .main .circle-2 {
+            background-color: #ff5e00;
+            bottom: 10%;
+            right: 30%;
+        }
+        .container {
+            margin: 200px auto;
+            width: 300px;
+            padding: 20px;
+            background-color: rgba(157, 157, 157, 0.3);
+            backdrop-filter: blur(5px);
+            border-radius: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: white;
+            margin-top: 50px;
+        }
+
+        input[type="range"] {
+            width: 100%;
+        }
+        button {
+            display: block;
+            margin: 20px 0;
+            padding: 10px;
+            width: 100%;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        span,
+        #totalPerPerson {
+            color: white;
+        }
+        #total {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: white;
+        }
+        #tipAmount {
+            margin-bottom: 10px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+    <div class="container">
+        <h2>Tip Calculator</h2>
+        <label for="billAmount">Bill Amount:</label>
+        <input type="range" id="billAmount" min="0" max="1000" step="1" oninput="updateBillAmount(this.value)">
+        <span id="billAmountValue">0</span>
+
+        <label for="tipPercentage">Tip Percentage:</label>
+        <input type="range" id="tipPercentage" min="0" max="100" step="1" oninput="updateTipPercentage(this.value)">
+        <span id="tipPercentageValue">0%</span>
+
+        <label for="numPeople">Number of People:</label>
+        <input type="range" id="numPeople" min="1" max="10" step="1" oninput="updateNumPeople(this.value)">
+        <span id="numPeopleValue">1</span>
+
+        <button onclick="calculateTip()">Calculate Tip</button>
+
+        <div id="total"></div>
+        <div id="tipAmount"></div>
+        <div id="totalPerPerson"></div>
+        </div>
+    </div>
+
+    <script>
+        function calculateTip() {
+            var billAmount = parseFloat(document.getElementById("billAmountValue").textContent);
+            var tipPercentage = parseFloat(document.getElementById("tipPercentageValue").textContent);
+            var numPeople = parseInt(document.getElementById("numPeopleValue").textContent);
+
+            if (isNaN(billAmount) || isNaN(tipPercentage) || isNaN(numPeople)) {
+                alert("Please enter valid numbers.");
+                return;
+            }
+
+            var tipAmount = (billAmount * tipPercentage) / 100;
+            var totalAmount = billAmount + tipAmount;
+            var totalPerPerson = totalAmount / numPeople;
+
+            document.getElementById("tipAmount").innerHTML = "Tip Amount: $" + tipAmount.toFixed(2);
+            document.getElementById("total").innerHTML = "Total Amount: $" + totalAmount.toFixed(2);
+            document.getElementById("totalPerPerson").innerHTML = "Total per Person: $" + totalPerPerson.toFixed(2);
+        }
+
+        function updateBillAmount(value) {
+            document.getElementById("billAmountValue").textContent = value;
+        }
+
+        function updateTipPercentage(value) {
+            document.getElementById("tipPercentageValue").textContent = value + "%";
+        }
+
+        function updateNumPeople(value) {
+            document.getElementById("numPeopleValue").textContent = value;
+        }
+
+    </script>
+</body>
+
+</html>

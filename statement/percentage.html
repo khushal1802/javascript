@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>percentage</title>
+</head>
+<body>
+    <h1>calculate percentage and grade</h1>
+
+    <script>
+        var phy=parseInt(prompt("Enter physics marks : "));
+        var chem=parseInt(prompt("Enter chemistry marks : "));
+        var bio=parseInt(prompt("Enter biology marks : "));
+        var maths=parseInt(prompt("Enter mathematics marks : "));
+        var com=parseInt(prompt("Enter computer marks : "));
+
+        var total=(phy+chem+bio+maths+com)*100/500;
+
+        document.write("Total percentage : "+total+"%")
+        if(total>=90){
+            document.write("<br>Grade : A");
+        }else if(total>=80){
+            document.write("<br>Grade : B");
+        }else if(total>=70){
+            document.write("<br>Grade : C");
+        }else if(total>=60){
+            document.write("<br>Grade : D");
+        }else if(total>=50){
+            document.write("<br>Grade : E");
+        }else if(total>=40){
+            document.write("<br>Grade : F");
+        }else{
+            document.write("Fail");
+        }        
+    </script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>To-Do List</title>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+        }
+
+        .main {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main .circle {
+            height: 300px;
+            width: 300px;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .main .circle-1 {
+            background-color: #0055ff;
+            top: 15%;
+            left: 30%;
+        }
+
+        .main .circle-2 {
+            background-color: #ff0000;
+            bottom: 15%;
+            right: 30%;
+        }
+
+        .task {
+            padding: 50px;
+            height: 400px;
+            width: 500px;
+            text-align: center;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(50px);
+            position: absolute;
+        }
+
+        ::placeholder {
+            color: white;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 20px 0px;
+            background-color: transparent;
+            border: 1px solid black;
+            color: white;
+            transition: all .5s;
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        input:hover {
+            border: 1px solid blue;
+        }
+
+span{
+    margin-right: 200px;
+}
+        button {
+            background-color: black;
+            border: 1px solid red;
+            font-weight: 600;
+            color: white;
+            padding: 10px 20px;
+            margin-bottom: 30px;
+            transition: all .5s;
+        }
+
+        button:hover {
+            background-color: red;
+            color: black;
+        }
+    </style>
+</head>
+
+<<body>
+    <div class="main">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="task">
+            <h1>To-Do List</h1>
+
+            <input type="text" id="task-input" placeholder="Enter task"><br>
+            <button id="add-task-btn">Add Task</button>
+            <button id="undo-btn" style="display: none;">Undo</button>
+
+            <table>
+                <tr>
+                    <th><span>Your task</span></th>
+                    <th>Action</th>
+                </tr>
+                <tbody id="tbody"></tbody>
+            </table>
+
+
+        </div>
+    </div>
+    <script>
+        const taskInput = document.getElementById('task-input');
+        const addTaskBtn = document.getElementById('add-task-btn');
+        const undoBtn = document.getElementById('undo-btn');
+        let task = [];
+        let lastDeletedTask = null;
+
+        addTaskBtn.addEventListener('click', addText = (event) => {
+            if (taskInput.value !== "") {
+                event.preventDefault();
+                let obj = {
+                    userId: Math.floor(Math.random() * 100),
+                    userinput: taskInput.value
+                };
+                if (localStorage.getItem("task") == null) {
+                    task.push(obj);
+                    localStorage.setItem("task", JSON.stringify(task));
+                    view();
+                } else {
+                    let val = JSON.parse(localStorage.getItem('task'));
+                    val.push(obj);
+                    localStorage.setItem('task', JSON.stringify(val));
+                    view();
+                }
+                taskInput.value = "";
+                view();
+            } else {
+                alert("Please Enter Your Task");
+            }
+        });
+
+        view = (() => {
+            let display = JSON.parse(localStorage.getItem("task"));
+            let tbl = '';
+
+            for (i in display) {
+                tbl += `
+                    <tr>
+                        <td><span>${display[i].userinput}</span></td>
+                        <td>
+                            <button onclick='remove(${display[i].userId})'>Delete</button>
+                        </td>
+                    </tr>`;
+            }
+            document.getElementById("tbody").innerHTML = tbl;
+        });
+
+        remove = ((userId) => {
+            let deletes = JSON.parse(localStorage.getItem('task'));
+        document.getElementById('undo-btn').style="display:inline-block";
+            for (i in deletes) {
+                if (deletes[i].userId == userId) {
+                    lastDeletedTask = deletes[i];
+                    deletes.splice(i, 1);
+                }
+                localStorage.setItem('task', JSON.stringify(deletes));
+            }
+            view();
+            setTimeout(()=>{
+            document.getElementById('undo-btn').style="display:none";
+            },3000)
+        });
+       
+        undo = () => {
+            if (lastDeletedTask !== null) {
+                let storedTasks = JSON.parse(localStorage.getItem('task'));
+                storedTasks.push(lastDeletedTask);
+                localStorage.setItem('task', JSON.stringify(storedTasks));
+                lastDeletedTask = null;
+                view();
+            }
+        };
+
+        undoBtn.addEventListener('click', undo);
+
+        view();
+    </script>
+    </body>
+
+</html>

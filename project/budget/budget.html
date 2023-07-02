@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Budget App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+</head>
+
+<body>
+    <h1>Budget App</h1>
+    <div class="budget">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <div id="budget-form">
+                        <input type="number" id="amount-input" placeholder="Enter Amount"><br>
+                        <button id="add-amount-btn" class="mt-5">Add Amount</button>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div id="expense-form">
+                        <input type="text" id="expense-description" placeholder="Expense Description"><br>
+                        <input type="number" id="expense-amount" class="mt-3" placeholder="Expense Amount"><br>
+                        <button id="add-expense-btn" class="mt-4">Add Expense</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="summary">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div id="budget-summary">
+                        <p>Total Amount: <span id="total-amount">0</span><button id="add-new-amount-btn">Add New
+                                Amount</button></p>
+                        <p>Total Expenses: <span id="total-expenses">0</span></p>
+                        <p id="balance-message">Balance: <span id="balance">0</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <h2 class="mt-5">Expenses Product</h2>
+    <div id="budget-items">
+        <div class="container">
+            <div class="row-12">
+                <ul id="item-list"></ul>
+            </div>
+        </div>
+    </div>
+    <script src="bootstrap.bundle.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>

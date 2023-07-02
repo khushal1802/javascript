@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget</title>
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"> -->
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <div class="nav-text">
+                <h2 id="text-Budget">
+                    Budget
+                </h2>
+            </div>
+        </div>
+    </header>
+
+    <div id="innBnt " class="d-flex ">
+        <div class="container">
+            <div class="col-12 addCla">
+                <input type="text" id="AddBudgetInput" placeholder="AddBudget for Your your Bank" required> <br>
+                <input type="submit" id="AddBudgetBtn" onclick="AddBudgetBtn()" value="AddBudget">
+            </div>
+            <div class="col-12 addCla">
+                <input type="text" id="ExTextid" placeholder="Enter You By product id"> <br>
+                <input type="text" id="ExText" placeholder="Enter You By product details"> <br>
+                <input type="text" id="ExText1" placeholder="Enter You product Price "> <br>
+                <input type="submit" id="AddProBtn" onclick="insert()" value="Expense">
+                <input type="submit" style="display: none;" id="AddupBtn" onclick="update()" value="update">
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id="Dis">
+        <div id="DisTotalBudget" style="display: flex;">
+            <div id="TotalShow" style="margin: 0 20px;">
+                <h3> Total Budget </h3>
+                <span id="t0" style="font-size: 30px;">0</span>
+                <button id="ExAdd" onclick="ExAdd()">Add Amount</button>
+            </div>
+            <div id="ExTotal" style="margin: 0 20px;">
+                <h3> Expense </h3>
+                <span id="t1" style="font-size: 30px;">0</span>
+            </div>
+            <div id="CurrantBudget" style="margin: 0 20px;">
+                <h3>Currant Budget</h3>
+                <span id="t2" style="font-size: 30px;">0</span>
+            </div>
+        </div>
+    </div>
+
+
+        <table>
+            <th>id</th>
+            <th>list</th>
+            <th>Amount</th>
+            <tbody id="rec"></tbody>
+        </table>
+
+
+    <script src="./index.js"></script>
+</body>
+
+</html>
